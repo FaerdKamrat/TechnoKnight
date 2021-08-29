@@ -6,7 +6,7 @@ key_jump = keyboard_check_pressed(vk_space);
 #region Acceleration
 var _grounded = place_meeting(x, y+1, obj_Solid);
 var _gAccel = 0.1;
-var _gDeccel = 0.12;
+var _gDeccel = 0.2;
 
 var _airAccel = 0.09;
 var _airDeccel = 0.1;
@@ -18,7 +18,7 @@ if(_grounded){
 }
 else{
 	vsp += grv;
-	entityAccel(_airAccel, _airDeccel, maxHsp*0.8);
+	entityAccel(_airAccel, _airDeccel, maxHsp*0.6);
 }
 #endregion Acceleration
 
