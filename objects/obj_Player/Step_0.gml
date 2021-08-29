@@ -1,5 +1,7 @@
-right = keyboard_check(ord("D"));
-left = keyboard_check(ord("A"));
+key_right = keyboard_check(ord("D"));
+key_left = keyboard_check(ord("A"));
+key_jump = keyboard_check_pressed(vk_space);
+
 //accelering och inbromsning värden
 #region Acceleration
 var _grounded = place_meeting(x, y+1, obj_Solid);
@@ -12,13 +14,13 @@ var _airDeccel = 0.1;
 //om man är på marken mattar in dem i enityAccel functionen.
 if(_grounded){
 	entityAccel(_gAccel, _gDeccel, maxHsp);
+	if(key_jump) vsp = jumpForce;
 }
 else{
 	vsp += grv;
-	entityAccel(_gAccel, _gDeccel, maxHsp/2);
+	entityAccel(_airAccel, _airDeccel, maxHsp*0.8);
 }
 #endregion Acceleration
-
 
 
 #region Collision

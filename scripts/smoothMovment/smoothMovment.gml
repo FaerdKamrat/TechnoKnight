@@ -8,7 +8,7 @@ function entityAccel(){
 	///@param maxHsp
 	
 	// deklarera några locala variabler
-	var _keyPressed = right-left;
+	var _keyPressed = key_right-key_left;
 	var _accel = argument[0];
 	var _deccel = argument[1];
 	var _userMaxHsp = argument[2];
@@ -29,6 +29,6 @@ function entityAccel(){
 	klickar in en knapp.
 */
 function playerKeys(){
-	if(right && left || !right && !left) return false;
+	if(key_right && key_left || !key_right && !key_left) return false;
 	return true;
 }
