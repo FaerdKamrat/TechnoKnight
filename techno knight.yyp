@@ -1,5 +1,6 @@
 {
   "resources": [
+    {"id":{"name":"spr_PlayerIDLE","path":"sprites/spr_PlayerIDLE/spr_PlayerIDLE.yy",},"order":0,},
     {"id":{"name":"Welcome","path":"notes/Welcome/Welcome.yy",},"order":0,},
   ],
   "Options": [
