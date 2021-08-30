@@ -2,42 +2,40 @@ key_right = keyboard_check(ord("D"));
 key_left = keyboard_check(ord("A"));
 key_jump = keyboard_check_pressed(vk_space);
 
-if(key_right || key_left || key_jump) controller = 0;
+if(key_right || key_left || key_jump) controller = false;
 
 if(abs(gamepad_axis_value(0,gp_axislh)) > 0.2) {
 	key_left = abs(min(gamepad_axis_value(0, gp_axislh),0));
 	key_right = max(gamepad_axis_value(0, gp_axislh),0);
-	controller = 1;
+	controller = true;
 }
 if(gamepad_button_check_pressed(0,gp_face1)) {
 	key_jump = 1;
 	controller = 1;
 }
+var _move = key_right-key_left;
 
-#region Acceleration
-//accelering och inbromsning värden
-var _grounded = place_meeting(x, y+1, obj_Solid);
-var _gAccel = 0.1;
-var _gDeccel = 0.2;
+if(_move != 0){
+	hsp += _move*accel;
+	hsp = clamp(hsp,-maxHsp,maxHsp);
+} 
+else{
+	hsp = lerp(hsp, 0, 0.3);
+}
 
-var _airAccel = 0.09;
-var _airDeccel = 0.1;
-
-//om man är på marken mattar in dem i enityAccel functionen.
-if(_grounded){
-	entityAccel(_gAccel, _gDeccel, maxHsp);
-	if(key_jump) vsp = jumpForce;
+if(place_meeting(x, y+1, obj_Solid)){
+	alarm[0] = 10;
 	jumpAmount = 1;
+	if(alarm[0] != -1 && key_jump) vsp = jumpForce; 
 }
 else{
-	vsp += grv;
-	entityAccel(_airAccel, _airDeccel, maxHsp*0.5);
-	if(key_jump && jumpAmount > 0){
-		vsp = jumpForce*0.5;
+	if(alarm[0] != -1 && key_jump) vsp = jumpForce; 
+	else if(alarm[0] == -1 && key_jump && jumpAmount > 0){
+		vsp = jumpForce*0.6;
 		jumpAmount--;
 	}
+	vsp += grv;
 }
-#endregion Acceleration
 
 
 #region Collision
@@ -58,9 +56,11 @@ if(place_meeting(x, y+vsp, obj_Solid)){
 #endregion Collision
 
 
-if(hsp > 0) image_xscale = 1;
-else if(hsp < 0) image_xscale = -1;
 //gör att spelares x och y pos föendras 
 //med hjälp av hsp och vsp
 y += vsp;
 x += hsp;
+
+
+if(hsp != 0) image_xscale = sign(hsp);
+

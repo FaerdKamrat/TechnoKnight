@@ -1,11 +1,16 @@
 image_speed = 1;
-controller = 0;
+
+controller = false;
 
 hsp = 0;
 vsp = 0;
 
 maxHsp = 10;
+grv = 0.7;
+accel = 1;
 
-grv = 0.2;
-jumpForce = -8
+
+jumpForce = -10;
 jumpAmount = 0;
+
+
