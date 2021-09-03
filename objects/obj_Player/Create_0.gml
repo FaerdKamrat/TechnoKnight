@@ -14,3 +14,6 @@ jumpForce = -12;
 jumpAmount = 0;
 
 
+dashsp = 30;
+dashDuration = 0;
+
