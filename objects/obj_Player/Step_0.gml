@@ -1,4 +1,6 @@
 #region controlls
+// definerar kontrollernas input på tangenprodet / kontroller.
+// har en variabel som är controller som ser till att spelet vet om man andvänder kontroller eller inte.
 key_right = keyboard_check(ord("D"));
 key_left = keyboard_check(ord("A"));
 key_jump = keyboard_check_pressed(vk_space) || gamepad_button_check_pressed(0,gp_face1);
@@ -17,7 +19,9 @@ if(abs(gamepad_axis_value(0,gp_axislh)) > 0.2) {
 
 
 #region movment
+//ser till att vi går åt rätt hål.
 dashDuration--;
+dashDuration = clamp(dashDuration, -20,20);
 var _move = key_right-key_left;
 
 if(_move != 0 && dashDuration <= 0){
@@ -25,7 +29,7 @@ if(_move != 0 && dashDuration <= 0){
 	hsp = clamp(hsp,-maxHsp,maxHsp);
 } 
 else if (_move == 0 && dashDuration <= 0){
-	hsp = lerp(hsp, 0, 0.3);
+	hsp = lerp(hsp, 0, 0.26);
 }
 
 if(key_dash && dashDuration <= -10){
@@ -38,14 +42,17 @@ if(dashDuration > 0){
 	
 	hsp = clamp(hsp, -dashsp, dashsp);
 	switch(dashDuration){
-		case 6:
+		case 20:
 			instance_create_layer(x, y, "Instances", obj_DashGhost);
+			show_debug_message("ghost 1");
 			break;
-		case 12:
+		case 13:
 			instance_create_layer(x, y, "Instances", obj_DashGhost);
+			show_debug_message("ghost 2");
 			break;
-		case 18:
+		case 7:
 			instance_create_layer(x, y, "Instances", obj_DashGhost);
+			show_debug_message("ghost 3");
 			break;
 	}
 	show_debug_message(string(hsp));
@@ -55,11 +62,11 @@ if(place_meeting(x, y+1, obj_Solid)){
 	alarm[0] = 10;
 	jumpAmount = 1;
 	accel = 1;
-	if(alarm[0] != -1 && key_jump) vsp = jumpForce; 
+	if(alarm[0] != -1 && key_jump){ vsp = jumpForce; alarm[0] = -1;}
 }
 
 else {
-	if(alarm[0] != -1 && key_jump) vsp = jumpForce; 
+	if(alarm[0] != -1 && key_jump){ vsp = jumpForce; alarm[0] = -1;	}
 	else if(alarm[0] == -1 && key_jump && jumpAmount > 0){
 		vsp = jumpForce*0.7;
 		jumpAmount--; 
