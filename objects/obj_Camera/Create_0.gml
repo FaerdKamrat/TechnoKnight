@@ -3,7 +3,7 @@
 #macro RES_H 540
 #macro RES_SCALE 1
 
-#macro CAM_SMOOTH 0.09
+#macro CAM_SMOOTH 0.15
 
 //Enable views
 view_enabled = true;

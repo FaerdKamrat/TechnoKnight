@@ -13,7 +13,7 @@ _targetY = clamp(_targetY, 0, room_height - RES_H);
 
 // Smoothly move the camera to the target
 _camX = lerp(_camX, _targetX, CAM_SMOOTH);
-_camY = lerp(_camY, _targetY, CAM_SMOOTH);
+_camY = lerp(_camY, _targetY, CAM_SMOOTH+0.1);
 
 //apply camera postion
 camera_set_view_pos(camera, _camX, _camY);

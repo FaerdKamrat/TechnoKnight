@@ -41,21 +41,10 @@ if(dashDuration > 0){
 	hsp += image_xscale*1.1;
 	
 	hsp = clamp(hsp, -dashsp, dashsp);
-	switch(dashDuration){
-		case 20:
-			instance_create_layer(x, y, "Instances", obj_DashGhost);
-			show_debug_message("ghost 1");
-			break;
-		case 13:
-			instance_create_layer(x, y, "Instances", obj_DashGhost);
-			show_debug_message("ghost 2");
-			break;
-		case 7:
-			instance_create_layer(x, y, "Instances", obj_DashGhost);
-			show_debug_message("ghost 3");
-			break;
+	if(dashDuration == 20 || dashDuration == 13 || dashDuration == 7){
+		instance_create_layer(x, y, "Instances", obj_DashGhost);
 	}
-	show_debug_message(string(hsp));
+	show_debug_message("dash speed: "+string(hsp));
 }
 
 if(place_meeting(x, y+1, obj_Solid)){
