@@ -16,4 +16,5 @@ jumpAmount = 0;
 
 dashsp = 27;
 dashDuration = 0;
+allowDash = false;
 

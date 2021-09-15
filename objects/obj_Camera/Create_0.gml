@@ -1,4 +1,4 @@
-//Resolution macros
+//Resolution macros 
 #macro RES_W 960
 #macro RES_H 540
 #macro RES_SCALE 1
@@ -9,17 +9,17 @@
 view_enabled = true;
 view_visible[0] = true;
 
-// Create camera
+// skapar camera
 camera = camera_create_view(0, 0, RES_W, RES_H);
 
 view_set_camera(0, camera);
 
-// resize window and aplcation surface
-window_set_size(RES_W * RES_SCALE, RES_H * RES_SCALE, );
+// resize window och aplcation surface
+window_set_size(RES_W * RES_SCALE, RES_H * RES_SCALE);
 
 display_set_gui_size(RES_W, RES_H);
 
-// Center the window
+// centerar window
 
 var _diplayW = display_get_width();
 var _diplayH = display_get_height();
