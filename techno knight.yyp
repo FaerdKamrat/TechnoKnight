@@ -2,6 +2,7 @@
   "resources": [
     {"id":{"name":"spr_PlayerIDLE","path":"sprites/spr_PlayerIDLE/spr_PlayerIDLE.yy",},"order":0,},
     {"id":{"name":"spr_PlayerIDLEx64","path":"sprites/spr_PlayerIDLEx64/spr_PlayerIDLEx64.yy",},"order":1,},
+    {"id":{"name":"Sprite3","path":"sprites/Sprite3/Sprite3.yy",},"order":2,},
     {"id":{"name":"Welcome","path":"notes/Welcome/Welcome.yy",},"order":0,},
   ],
   "Options": [
@@ -43,7 +44,7 @@
   ],
   "IncludedFiles": [],
   "MetaData": {
-    "IDEVersion": "2.3.3.574",
+    "IDEVersion": "2.3.4.580",
   },
   "resourceVersion": "1.4",
   "name": "techno knight",
