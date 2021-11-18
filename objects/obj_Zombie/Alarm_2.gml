@@ -1,1 +1,1 @@
-is_agro = false;
+if(is_agro) is_agro = false;

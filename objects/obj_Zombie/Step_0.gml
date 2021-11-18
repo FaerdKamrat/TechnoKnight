@@ -1,27 +1,28 @@
-
-if(obj_Player.x < x && is_agro) walk_dir = -1;
-else if(obj_Player.x > x && is_agro) walk_dir = 1;
-if(obj_Player.y == y && image_xscale == walk_dir){
-	is_agro = true;
-	
-	hsp = max_spd*walk_dir
+if(is_agro){
+	spd = max_spd;
+	if(obj_Player.x < x) walk_dir = -1;
+	if(obj_Player.x > x) walk_dir = 1;
 }
 else{
-	alarm[2] = random_range(60,60*2);
+	var _random_walk = irandom(96);
+	if(_random_walk == 60 && alarm[1] == -1 && alarm[0] == -1){
+		spd = wonder_spd;
+		alarm[0] = irandom_range(30,60);
+		walk_dir = choose(-1,1);
+	}
 }
+
+if(obj_Player.y < y && distance_to_object(obj_Player) <= (32*5)){
+	is_agro = true;
+}
+else is_agro = false;
+
+
+
 
 vsp += grv;
 
-#region random Walk
-var _random_walk = irandom(60);
-if(_random_walk == 60 && !is_agro && alarm[0] == -1 && alarm[1] == -1){
-	alarm[0] = random_range(60,120);
-	walk_dir = choose(-1,1);
-}
-if(alarm[0] != -1 && alarm[1] == -1 && !is_agro) {
-	hsp = walk_dir*spd;
-}
-#endregion random Walk
+hsp = spd*walk_dir	
 
 #region Collision
 //pixel perfect Collision med obj_solid
@@ -31,6 +32,7 @@ if(place_meeting(x+hsp, y, obj_Solid)){
 		x += sign(hsp);
 	}
 	hsp = 0;	
+	is_agro = false;
 }
 
 x += hsp;
@@ -42,7 +44,7 @@ if(place_meeting(x, y+vsp, obj_Solid)){
 }
 y += vsp;
 #endregion Collision
-show_debug_message(string(walk_dir)+"   "+string(is_agro)+"   ")
+show_debug_message(string(is_agro)+"    "+string(distance_to_object((obj_Player)))+"    "+string(obj_Player.y)+"   "+string(y))
 
-if(hsp != 0) image_xscale = sign(walk_dir);
+if(hsp != 0) image_xscale = walk_dir;
 
