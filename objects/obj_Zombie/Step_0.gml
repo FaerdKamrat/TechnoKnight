@@ -1,21 +1,34 @@
+distans_player = distance_to_object(obj_Player)
 if(is_agro){
-	spd = max_spd;
+	spd = lerp(spd, max_spd, 0.08);
 	if(obj_Player.x < x) walk_dir = -1;
 	if(obj_Player.x > x) walk_dir = 1;
 }
 else{
 	var _random_walk = irandom(96);
+	spd = lerp(spd, 0, 0.1);
 	if(_random_walk == 60 && alarm[1] == -1 && alarm[0] == -1){
-		spd = wonder_spd;
+		spd = lerp(spd, wonder_spd, 0.8);
 		alarm[0] = irandom_range(30,60);
 		walk_dir = choose(-1,1);
 	}
 }
 
-if(obj_Player.y < y && distance_to_object(obj_Player) <= (32*5)){
-	is_agro = true;
+if((y < obj_Player.y+10 && y > obj_Player.y-10 && !is_attacking && distans_player <= (32*13)) || alarm[3] != -1){
+	if(collision_line(x,y,obj_Player.x,obj_Player.y,obj_Player, false, false) 
+	   && !collision_line(x,y,obj_Player.x,obj_Player.y,obj_Solid,false,false)) {
+		if(alarm[4] == -1) alarm[3] = 5;
+		var _PlayerPoint = point_direction(x,y,obj_Player.x,obj_Player.y);
+		if(_PlayerPoint < 90 && walk_dir == 1 || _PlayerPoint > 90 && walk_dir == -1){
+			is_agro = true;
+		}
+		else if( distans_player <= (32*2)) is_agro = true;
+		
+	}
 }
 else is_agro = false;
+	
+
 
 
 
@@ -46,5 +59,5 @@ y += vsp;
 #endregion Collision
 show_debug_message(string(is_agro)+"    "+string(distance_to_object((obj_Player)))+"    "+string(obj_Player.y)+"   "+string(y))
 
-if(hsp != 0) image_xscale = walk_dir;
+
 
