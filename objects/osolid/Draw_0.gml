@@ -1,0 +1,1 @@
+draw_sprite_ext(sBox,0, x, y, image_xscale, image_yscale, 0, c_blue, 0.6)
