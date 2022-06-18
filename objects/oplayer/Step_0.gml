@@ -5,16 +5,16 @@ key_jump = keyboard_check_pressed(key.jump)
 
 state()
 
-
 #region Col
+
 if(place_meeting(x + vector.x, y, oSolid)){
 	if(state == stateDash) state = dashStop
 	while(!place_meeting(x + sign(vector.x), y, oSolid)){
 		x += sign(vector.x)
 	}
 	vector.x = 0
-	
 }
+x += vector.x
 
 if(place_meeting(x, y + vector.y, oSolid)){
 	while(!place_meeting(x, y + sign(vector.y), oSolid)){
@@ -22,8 +22,7 @@ if(place_meeting(x, y + vector.y, oSolid)){
 	}
 	vector.y = 0
 }
+y += vector.y
+
 #endregion Col
 
-
-x += vector.x
-y += vector.y
