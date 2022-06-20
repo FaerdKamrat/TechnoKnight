@@ -3,8 +3,17 @@ key_left = keyboard_check(ord(key.left))
 key_jump_hold = keyboard_check(key.jump)
 key_jump = keyboard_check_pressed(key.jump)
 
+if(keyboard_check_pressed(vk_escape)){
+	time_source_start(trase)
+	trase_list = []
+}
+
+if(ts_check_active(trase)){
+	array_push(trase_list, [x, y, state_name, round(time_source_get_time_remaining(trase))])
+}
 state()
 
+print(dir)
 #region Col
 
 if(place_meeting(x + vector.x, y, oSolid)){
