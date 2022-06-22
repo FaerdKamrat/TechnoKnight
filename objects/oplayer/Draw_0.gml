@@ -12,8 +12,3 @@ switch(state){
 }
 draw_set_halign(fa_center)
 draw_text(x,y-128, state_name)
-
-if(array_length(trase_list) > 0 && ts_check_active(trase_2)){
-	draw_trase(trase_list, time_source_get_time_remaining(trase_2), c_white, c_red)
-}
-

@@ -8,7 +8,7 @@
 stateFree = function(){
 	
 #region movement
-// denna är den som gör att man kan röra sig.
+// denna är den som gör a t man kan röra sig.
 	state_name = "stateFree"
 	var move_h = key_right - key_left;
 
@@ -198,13 +198,3 @@ projectile_cooldown = time_source_create(time_source_game, 2, time_source_units_
 
 state = stateFree
 #endregion States
-
-#region Arrays
-
-trase_list = []
-#endregion Arrays
-
-#region Time Sourcess
-	trase = time_source_create(time_source_game, 60*5, time_source_units_frames, function(){time_source_start(trase_2)})
-	trase_2 = time_source_create(time_source_game, 60*5, time_source_units_frames, function(){})
-#endregion Time Sources

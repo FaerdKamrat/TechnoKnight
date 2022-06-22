@@ -1,8 +1,8 @@
 {
   "resources": [
     {"id":{"name":"keystruct","path":"scripts/keystruct/keystruct.yy",},"order":2,},
+    {"id":{"name":"oSlajm","path":"objects/oSlajm/oSlajm.yy",},"order":8,},
     {"id":{"name":"oPlayer","path":"objects/oPlayer/oPlayer.yy",},"order":0,},
-    {"id":{"name":"oDot","path":"objects/oDot/oDot.yy",},"order":5,},
     {"id":{"name":"oSolid","path":"objects/oSolid/oSolid.yy",},"order":1,},
     {"id":{"name":"oGame","path":"objects/oGame/oGame.yy",},"order":2,},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},"order":0,},
