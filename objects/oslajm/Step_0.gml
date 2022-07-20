@@ -3,6 +3,13 @@ player_dir = 0;
 if(oPlayer.x > x) player_dir = 1
 else if(oPlayer.x < x) player_dir = -1
 
+
+if(place_meeting(x, y+1, oSolid)){
+	grounded = true
+} else{
+	grounded = false
+	vector.y += 0.5
+}
 state()
 
 
