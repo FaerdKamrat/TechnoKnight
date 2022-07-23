@@ -18,6 +18,7 @@ if(place_meeting(x + vector.x, y, oSolid)){
 		x += sign(vector.x)
 	}
 	vector.x = 0
+	jumping_dir = -jumping_dir
 }
 x += vector.x
 if(place_meeting(x, y + vector.y, oSolid)){

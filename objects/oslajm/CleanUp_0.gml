@@ -1,0 +1,2 @@
+time_source_destroy(jump_dir_delay)
+time_source_destroy(jump_delay)

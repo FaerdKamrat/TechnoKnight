@@ -4,10 +4,10 @@ function playerInSight(){
 	return (collision_line(x, y, oPlayer.x, oPlayer.y, oPlayer, false, false) && 
 			!collision_line(x, y, oPlayer.x, oPlayer.y, oSolid, false, false))
 }
-function LookForPlayerHnV(true_x_false_y, pos_delta){
-	if(argument[0]){
-		return (oPlayer.x <= pos_delta && oPlayer.x >= -pos_delta)	
+function LookForPlayerHnV(true_x_false_y, pos, delta){
+	if(true_x_false_y){
+		return (oPlayer.x <= pos + delta && oPlayer.x >=  pos - delta)	
 	} else{
-		return (oPlayer.y <= pos_delta && oPlayer.y >= -pos_delta)
+		return (oPlayer.y <= pos + delta && oPlayer.y >= pos - delta)
 	}
 }
