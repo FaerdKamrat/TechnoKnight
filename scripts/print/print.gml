@@ -1,8 +1,0 @@
-// Script assets have changed for v2.3.0 see
-// https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
-function print(msg, object_index = ""){
-	if(object_index == "") show_debug_message(msg)
-	else{
-		show_debug_message(string(object_get_name(object_index)+": "+msg))
-	}
-}

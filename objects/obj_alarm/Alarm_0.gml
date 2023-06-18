@@ -1,0 +1,2 @@
+callback()
+instance_destroy()
